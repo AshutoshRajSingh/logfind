@@ -5,6 +5,11 @@ pub struct SearchResult<'a> {
     pub line: &'a str,
 }
 
+pub enum SearchType {
+    Any,
+    All
+}
+
 impl<'a> SearchResult <'a> {
     pub fn new(line_no: usize, column: usize, line: &'a str) -> Self {
         Self { line_no: line_no, column: column, line: line }
