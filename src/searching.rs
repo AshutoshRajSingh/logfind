@@ -95,7 +95,7 @@ mod tests {
 
     #[test]
     fn test_search_result_with_matches() {
-        let test_string = "<log data> nginx\napache <log data>\n31/08/2022: nginx: <log data>";
+        let test_string = MULTILINE_TEST_STR;
         let query = "nginx";
 
         let result_vector = search(query, test_string);
