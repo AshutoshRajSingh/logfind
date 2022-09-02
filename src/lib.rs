@@ -4,7 +4,7 @@ pub mod constants;
 pub mod util;
 
 use config::Config;
-use searching::search;
+use searching::search_multiple;
 use constants::DEFAULT_PATHS;
 use util::flatten_file_tree;
 
@@ -20,7 +20,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
                     continue;
                 }
             };
-            let results = search(config.query.as_str(), contents.as_str());
+            let results = search_multiple(config.queries.as_slice(), contents.as_str(), &config.search_type);
             if results.len() > 0 {
                 println!("File: {:?}", &entry);
                 for result in results {
