@@ -50,6 +50,9 @@ impl<'a> Config<'a> {
                     "--minimal" => {
                         new_conf.output_type = OutputType::Minimal;
                     }
+                    "--verbose" => {
+                        new_conf.output_type = OutputType::Verbose;
+                    }
                     _ => {
                         let msg = format!("Unknown flag: {}", flag);
                         return Err(msg);
