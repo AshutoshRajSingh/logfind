@@ -72,7 +72,7 @@ pub fn search_multiple<'a>(queries: &[&str], content: &'a str, search_type: &Sea
         SearchType::Any => {
             cmp_fn = contains_any;
         }
-        &SearchType::All => {
+        SearchType::All => {
             cmp_fn = contains_all;
         }
     }
