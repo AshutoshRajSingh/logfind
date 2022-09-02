@@ -114,6 +114,25 @@ mod tests {
     }
 
     #[test]
+    fn test_multiple_search_result_with_matches_any() {
+        let result = search_multiple(&vec!["nginx", "data"], MULTILINE_TEST_STR, &SearchType::Any);
+        let result_strs: Vec<&str> = result.iter().map(|val| {val.line} ).collect();
+
+        assert!(result_strs.contains(&"<log data> nginx"));
+        assert!(result_strs.contains(&"apache <log data>"));
+        assert!(result_strs.contains(&"31/08/2022: nginx: <log data>"));
+    }
+
+    #[test]
+    fn test_multiple_search_result_with_matches_all() {
+        let result = search_multiple(&vec!["apache", "data"], MULTILINE_TEST_STR, &SearchType::All);
+        let result_strs: Vec<&str> = result.iter().map(|val| {val.line} ).collect();
+
+        assert!(result_strs.contains(&"apache <log data>"));
+        assert_eq!(result_strs.len(), 1);
+    }
+
+    #[test]
     fn test_contains_any_true() {
         assert!(contains_any(vec!["the", "fast"].as_slice(), TEST_STR));
     }
