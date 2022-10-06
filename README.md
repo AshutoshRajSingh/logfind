@@ -16,7 +16,7 @@ logfind nginx ubuntu --all --minimal
 Would search log files for lines that contain both "nginx" and "ubuntu", and would display the output formatted in a minimal format.
 
 ```shell
-logfind nginx ubuntu -any
+logfind nginx ubuntu --any
 ```
 
 Would search log files for lines containing any one of "nginx" or "ubuntu" or both, and display the output formatted in a minimal format.
